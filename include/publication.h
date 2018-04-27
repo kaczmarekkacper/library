@@ -4,16 +4,17 @@
 
 class publication
 {
+protected:
     char *title;
     int position;
     int amount;
     int time;
     bool active;
 public:
-    bool order();
-    bool get();
-    bool giveback();
-    double check_fee();
+    virtual bool order();
+    virtual bool get();
+    virtual bool giveback();
+    virtual double check_fee();
 
 };
 

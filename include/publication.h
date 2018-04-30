@@ -5,11 +5,11 @@
 class publication
 {
 protected:
-    char *title;
     int position;
-    int amount;
-    int time;
+    static const int time;
+    int how_many;
     bool active;
+    double fee;
 public:
     virtual bool order();
     virtual bool get();

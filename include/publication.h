@@ -6,16 +6,15 @@ class publication
 {
 protected:
     int position;
-    static const int time;
-    int how_many;
     bool active;
-    double fee;
+    int iterations;
 public:
+    publication();
+    ~publication();
     virtual bool order();
     virtual bool get();
     virtual bool giveback();
     virtual double check_fee();
-
 };
 
 #endif // PUBLICATION_H_INCLUDED

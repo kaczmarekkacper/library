@@ -6,8 +6,12 @@
 class book: public publication
 {
     static int amount;
+    static double fee;
+    static int time;
+    int pages;
 public:
-    book(int HOW_MANY): position(amount), how_many(HOW_MANY), active(true), fee(1.5);
+    book(): position(amount), active(true), iterations(0);
+    ~book();
     virtual bool order();
     virtual bool get();
     virtual bool giveback();

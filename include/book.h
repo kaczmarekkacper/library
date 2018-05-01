@@ -10,7 +10,7 @@ class book: public publication
     static int time;
     int pages;
 public:
-    book(): position(amount), active(true), iterations(0);
+    book();
     ~book();
     virtual bool order();
     virtual bool get();

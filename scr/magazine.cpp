@@ -1,13 +1,17 @@
 
 #include <random>
+
 #include "magazine.h"
 
 int magazine::amount = 1;
 double magazine::fee = 2.0;
 int magazine::time = 4;
 
+using namespace std;
+
 magazine::magazine()
 {
+    position = amount;
     amount++;
     random_device rd;
     mt19937 gen(rd());
@@ -20,22 +24,22 @@ magazine::~magazine()
     delete this;
 }
 
-virtual bool magazine::order()
+bool magazine::order()
 {
     return true;
 }
 
-virtual bool magazine::get()
+bool magazine::get()
 {
     return true;
 }
 
-virtual bool magazine::giveback()
+bool magazine::giveback()
 {
     return true;
 }
 
-virtual double magazine::check_fee()
+double magazine::check_fee()
 {
     return fee;
 }

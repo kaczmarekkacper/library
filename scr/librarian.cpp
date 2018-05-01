@@ -3,7 +3,7 @@
 
 int librarian::amount = 1;
 
-librarian::librarian()
+librarian::librarian(): number(amount)
 {
     amount++;
 }
@@ -13,17 +13,17 @@ librarian::~librarian()
     delete this;
 }
 
-virtual bool librarian::lend()
+bool librarian::lend()
 {
     return true;
 }
 
-virtual bool librarian::give_back()
+bool librarian::give_back()
 {
     return true;
 }
 
-virtual bool librarian::order()
+bool librarian::order()
 {
     return true;
 }

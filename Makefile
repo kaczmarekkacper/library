@@ -9,7 +9,7 @@ DEPDIR = libs
 
 TARGET = library
 
-default: book human librarian magazine publication reader test_for_library main
+default: directory book human librarian magazine publication reader test_for_library main
 
 directory:
 	mkdir -p $(BUILDDIR) $(DEPDIR)

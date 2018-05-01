@@ -6,17 +6,17 @@ human::~human()
     delete this;
 }
 
-virtual bool human::lend()
+bool human::lend()
 {
     return true;
 }
 
-virtual bool human::give_back()
+bool human::give_back()
 {
     return true;
 }
 
-virtual bool human::order()
+bool human::order()
 {
     return true;
 }

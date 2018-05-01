@@ -11,12 +11,12 @@
 #include "reader.h"
 #include "librarian.h"
 
-class test_for_library()
+class test_for_library
 {
-    vector <reader> vec_of_readers;
-    vector <librarian> vec_of_librarians;
-    vector <book> vec_of_books;
-    vector <magazine> vec_of_magazines;
+    std::vector <reader> vec_of_readers;
+    std::vector <librarian> vec_of_librarians;
+    std::vector <book> vec_of_books;
+    std::vector <magazine> vec_of_magazines;
 public:
     // hmr - how many readers
     // hml - how many librarians

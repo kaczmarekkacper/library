@@ -8,7 +8,7 @@ class librarian: public human
     static int amount;
     int number;
 public:
-    librarian(): number(amount), ;
+    librarian();
     ~librarian();
     virtual bool lend();
     virtual bool give_back();

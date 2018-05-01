@@ -8,25 +8,25 @@ publication::publication()
 
 publication::~publication()
 {
-    return this;
+    delete this;
 }
 
-virtual bool publication::order()
+bool publication::order()
 {
     return true;
 }
 
-virtual bool publication::get()
+bool publication::get()
 {
     return true;
 }
 
-virtual bool publication::giveback()
+bool publication::giveback()
 {
     return true;
 }
 
-virtual double publication::check_fee()
+double publication::check_fee()
 {
     return 1.5;
 }

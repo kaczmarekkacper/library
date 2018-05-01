@@ -9,10 +9,10 @@ class reader: public human
 {
     int number;
     static int amount;
-    vector <publication> publications;
+    std::vector <publication> publications;
     double fee;
 public:
-    reader(): number(amount);
+    reader();
     ~reader();
     virtual bool lend();
     virtual bool give_back();

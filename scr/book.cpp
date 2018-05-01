@@ -8,8 +8,11 @@ int book::amount = 1;
 double book::fee = 1.5;
 int book::time = 3;
 
-book::book( )
+book::book()
 {
+    position = amount;
+    active = true;
+    iterations = 0;
     amount++;
     random_device rd;
     mt19937 gen(rd());
@@ -22,22 +25,22 @@ book::~book()
     delete this;
 }
 
-virtual bool book::order()
+bool book::order()
 {
     return true;
 }
 
-virtual bool book::get()
+bool book::get()
 {
     return true;
 }
 
-virtual bool book::giveback()
+bool book::giveback()
 {
     return true;
 }
 
-virtual double book::check_fee()
+double book::check_fee()
 {
     return fee;
 }

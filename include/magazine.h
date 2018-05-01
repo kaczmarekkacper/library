@@ -10,7 +10,7 @@ class magazine: public publication
     static int time;
     int amount_of_articles;
 public:
-    magazine(): position(amount);
+    magazine();
     ~magazine();
     virtual bool order();
     virtual bool get();

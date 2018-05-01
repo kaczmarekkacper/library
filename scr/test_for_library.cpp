@@ -15,7 +15,7 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
     }
     for ( int i= 0; i < hml ; i++ )
     {
-        vec_of_readers.push_back( librarian() );
+        vec_of_librarians.push_back( librarian() );
     }
     for ( int i= 0; i < hmb ; i++ )
     {

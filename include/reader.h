@@ -13,9 +13,8 @@ class reader: public human
     double fee;
 public:
     reader();
-    ~reader();
     virtual bool lend();
-    virtual bool give_back();
+    virtual bool giveback();
     virtual bool order();
     bool pay_fee();
 };

@@ -10,7 +10,6 @@ protected:
     int iterations;
 public:
     publication();
-    ~publication();
     virtual bool order();
     virtual bool get();
     virtual bool giveback();

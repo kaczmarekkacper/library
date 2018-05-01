@@ -1,4 +1,4 @@
-
+#include <iostream>
 #include <random>
 
 #include "magazine.h"
@@ -12,6 +12,7 @@ using namespace std;
 magazine::magazine()
 {
     position = amount;
+    cout << "Magazine number" << position << " constructor" << endl;
     amount++;
     random_device rd;
     mt19937 gen(rd());
@@ -19,27 +20,26 @@ magazine::magazine()
     amount_of_articles =  dist( gen );
 }
 
-magazine::~magazine()
-{
-    delete this;
-}
-
 bool magazine::order()
 {
+    cout << "Magazine number" << position << " order function" << endl;
     return true;
 }
 
 bool magazine::get()
 {
+    cout << "Magazine number" << position << " get function" << endl;
     return true;
 }
 
 bool magazine::giveback()
 {
+    cout << "Magazine number" << position << " giveback function" << endl;
     return true;
 }
 
 double magazine::check_fee()
 {
+    cout << "Magazine number" << position << " check_fee function" << endl;
     return fee;
 }

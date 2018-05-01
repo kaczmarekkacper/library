@@ -11,7 +11,6 @@ class book: public publication
     int pages;
 public:
     book();
-    ~book();
     virtual bool order();
     virtual bool get();
     virtual bool giveback();

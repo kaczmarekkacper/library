@@ -9,9 +9,8 @@ class librarian: public human
     int number;
 public:
     librarian();
-    ~librarian();
     virtual bool lend();
-    virtual bool give_back();
+    virtual bool giveback();
     virtual bool order();
     double check_fee();
 

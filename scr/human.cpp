@@ -1,22 +1,23 @@
+#include <iostream>
 
 #include "human.h"
 
-human::~human()
-{
-    delete this;
-}
+using namespace std;
 
 bool human::lend()
 {
+    cout << "Human lend function" << endl;
     return true;
 }
 
-bool human::give_back()
+bool human::giveback()
 {
+    cout << "Human giveback function" << endl;
     return true;
 }
 
 bool human::order()
 {
+    cout << "Human order function" << endl;
     return true;
 }

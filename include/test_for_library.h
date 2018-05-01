@@ -25,6 +25,7 @@ public:
     // hml - how many loops
     test_for_library(int hmr, int hml, int hmb, int hmm, int hmloops );
     ~test_for_library();
+    long rdnumber( int a, int b);
 };
 
 #endif // TEST_FOR_LIBRARY_H_INCLUDED

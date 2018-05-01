@@ -11,7 +11,6 @@ class magazine: public publication
     int amount_of_articles;
 public:
     magazine();
-    ~magazine();
     virtual bool order();
     virtual bool get();
     virtual bool giveback();

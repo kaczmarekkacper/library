@@ -6,7 +6,6 @@
 using namespace std;
 
 int book::amount = 1;
-double book::fee = 1.5;
 int book::time = 3;
 
 book::book()
@@ -20,13 +19,12 @@ book::book()
     mt19937 gen(rd());
     uniform_int_distribution<> dist(20, 500);
     pages = dist( gen );
-
+    fee = ( dist(gen) / 100.0 );
 }
 
-bool book::order()
+bool book::order( human *selected )
 {
     cout << "Book number " << position << " order function" << endl;
-    return true;
 }
 
 bool book::get()

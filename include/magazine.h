@@ -3,12 +3,11 @@
 
 #include "publication.h"
 
-class magazine: public publication
+class magazine: public operations, public publication
 {
-    static int amount;
-    static double fee;
-    static int time;
-    int amount_of_articles;
+    static int amount; // a counter for position
+    static int time; // how many iterations it could be taken without paying
+    int amount_of_articles; //simple field
 public:
     magazine();
     virtual bool order();

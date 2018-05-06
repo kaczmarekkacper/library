@@ -3,18 +3,19 @@
 
 #include "publication.h"
 
-class book: public publication
+class book: public operations, public publication
 {
-    static int amount;
-    static double fee;
-    static int time;
-    int pages;
+    static int amount; // a counter for position
+    static int time; // how many iterations it could be taken without paying
+    int pages; // simple field
 public:
     book();
-    virtual bool order();
-    virtual bool get();
-    virtual bool giveback();
+    ~book();
+    virtual bool order( human *selected );
+    virtual bool get( human *selected );
+    virtual bool giveback( human *selected );
     virtual double check_fee();
+    virtual void iter();
 };
 
 #endif // BOOK_H_INCLUDED

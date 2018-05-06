@@ -5,18 +5,16 @@
 #include "human.h"
 #include "publication.h"
 
-class reader: public human
+class reader: public human, public operations
 {
-    int number;
     static int amount;
-    std::vector <publication> publications;
-    double fee;
 public:
     reader();
-    virtual bool lend();
-    virtual bool giveback();
+    ~reader();
     virtual bool order();
-    bool pay_fee();
+    virtual bool get();
+    virtual bool giveback();
+    virtual double check_fee();
 };
 
 #endif // READER_H_INCLUDED

@@ -5,15 +5,12 @@
 class publication
 {
 protected:
-    int position;
-    bool active;
-    int iterations;
+    int position; // first book has number one, next number two etc
+    bool active; // is already taken
+    int iterations; // how many iterations when taken
+    double fee; // how much will you pay for each iteration delay
 public:
-    publication();
-    virtual bool order();
-    virtual bool get();
-    virtual bool giveback();
-    virtual double check_fee();
+    virtual void iter();
 };
 
 #endif // PUBLICATION_H_INCLUDED

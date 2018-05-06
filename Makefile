@@ -9,7 +9,7 @@ DEPDIR = libs
 
 TARGET = library
 
-default: directory book human librarian magazine publication reader test_for_library main
+default: directory book human librarian operations magazine publication reader test_for_library main
 
 directory:
 	mkdir -p $(BUILDDIR) $(DEPDIR)
@@ -22,6 +22,9 @@ human:
 
 librarian:
 	$(CC) -c $(HEADERS) $(SRCDIR)/librarian.cpp -o $(DEPDIR)/librarian.o
+
+operations:
+	$(CC) -c $(HEADERS) $(SRCDIR)/operations.cpp -o $(DEPDIR)/operations.o
 
 magazine:
 	$(CC) -c $(HEADERS) $(SRCDIR)/magazine.cpp -o $(DEPDIR)/magazine.o

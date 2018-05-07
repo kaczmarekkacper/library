@@ -5,16 +5,11 @@
 #include "human.h"
 #include "publication.h"
 
-class reader: public human, public operations
+class reader: public human
 {
     static int amount;
 public:
     reader();
-    ~reader();
-    virtual bool order();
-    virtual bool get();
-    virtual bool giveback();
-    virtual double check_fee();
 };
 
 #endif // READER_H_INCLUDED

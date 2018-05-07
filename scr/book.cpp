@@ -1,5 +1,6 @@
 #include <iostream>
 #include <random>
+#include <vector>
 
 #include "book.h"
 
@@ -25,11 +26,23 @@ book::book()
 bool book::order( human *selected )
 {
     cout << "Book number " << position << " order function" << endl;
+    if ( active )
+    {
+        active = true;
+        selected->books_n_magazines.push_back( this );
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
 }
 
 bool book::get()
 {
     cout << "Book number " << position << " get function" << endl;
+
     return true;
 }
 

@@ -13,18 +13,20 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
     for ( int i= 0; i < hmr ; i++ )
     {
         vec_of_readers.push_back( reader() );
+        cout << "reader vector" << endl;
     }
 
     for ( int i= 0; i < hml ; i++ )
     {
         vec_of_librarians.push_back( librarian() );
+        cout << "librarian vector" << endl;
     }
 
     for ( int i= 0; i < (hmb+hmm) ; i++ )
     {
         vec_of_publications.push_back( book() );
         vec_of_publications.push_back( magazine() );
-
+        cout << "publication vector" << endl;
     }
 
     for (int i = 0 ; i < hmloops ; i++)
@@ -34,22 +36,26 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
             if ( rdnumber(0, 1) ) // reader's operations ( rd is 1)
             {
                 long option = rdnumber(1, 4);
-                int which_one_reader = rdnumber( 0, vec_of_readers.size());
-                int which_one_publication = rdnumber( 0, vec_of_publications.size());
-                int librarian = rdnumber ( 0, vec_of_librarians.size() );
+                int which_one_reader = rdnumber( 0, vec_of_readers.size()-1);
+                int which_one_publication = rdnumber( 0, vec_of_publications.size()-1);
+                int librarian = rdnumber ( 0, vec_of_librarians.size()-1);
                 switch ( option )
                 {
                 case 1:
                     vec_of_readers[which_one_reader].order( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    cout << "order reader" << endl;
                     break;
                 case 2:
                     vec_of_readers[which_one_reader].get( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    cout << "get reader" << endl;
                     break;
                 case 3:
                     vec_of_readers[which_one_reader].giveback( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    cout << "giveback reader" << endl;
                     break;
                 case 4:
                     vec_of_readers[which_one_reader].check_fee( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    cout << "check fee reader" << endl;
                     break;
                 default:
                     cout << "Reader nr " << which_one_reader << " does nothing." << endl;
@@ -60,13 +66,14 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
             else
             {
                 long option = rdnumber(1, 4);
-                int which_one_librarian = rdnumber( 0, vec_of_librarians.size());
-                int which_one_publication = rdnumber( 0, vec_of_publications.size());
-                int librarian = rdnumber ( 0, vec_of_librarians.size() );
+                int which_one_librarian = rdnumber( 0, vec_of_librarians.size()-1);
+                int which_one_publication = rdnumber( 0, vec_of_publications.size()-1);
+                int librarian = rdnumber ( 0, vec_of_librarians.size()-1);
                 switch ( option )
                 {
                 case 1:
                     vec_of_librarians[which_one_librarian].order( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    cout << "order librarian" << endl;
                     break;
                 case 2:
                     vec_of_librarians[which_one_librarian].get( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);

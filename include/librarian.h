@@ -11,7 +11,6 @@ class librarian: public human
     std::vector<human *> clients;
 public:
     librarian();
-    ~librarian();
     bool lib_order( human *client, publication *work);
     bool lib_get ( human *client, publication *work);
     bool lib_giveback ( human *client, publication *work);

@@ -12,7 +12,6 @@ librarian::librarian()
     amount++;
 }
 
-librarian::~librarian() {}
 bool librarian::lib_order( human *client, publication *work) {}
 bool librarian::lib_get ( human *client, publication *work) {}
 bool librarian::lib_giveback ( human *client, publication *work){}

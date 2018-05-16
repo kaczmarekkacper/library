@@ -9,4 +9,12 @@ using namespace std;
 int book::amount = 1;
 int book::time = 3;
 
-book::book() {}
+book::book()
+{
+    position = amount;
+    amount++;
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> dist(10, 1000);
+    long pages =  dist( gen );
+}

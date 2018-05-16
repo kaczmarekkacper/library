@@ -11,7 +11,6 @@ using namespace std;
 class publication: public pub_interface
 {
 protected:
-    int position; // first book/magazine has number one, next number two etc
     bool active; // is already taken?
     int iterations; // how many iterations when taken
     int time;
@@ -20,12 +19,14 @@ protected:
     int ordered; // if book isnt ordered, value is -1, in other case, value is amount of iterations it take to be taken
     vector <human *> ordering;
 public:
+    publication();
     ~publication();
-    virtual bool order( human *selected );
+    virtual bool order( human *selected ); // return 0 if publication isnt taken
     virtual bool get( human *selected );
     virtual bool giveback( human *selected );
     virtual double check_fee();
     virtual void iter();
+    virtual bool isactive();
 };
 
 #endif // PUBLICATION_H_INCLUDED

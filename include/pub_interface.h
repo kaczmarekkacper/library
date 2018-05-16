@@ -9,5 +9,6 @@ protected:
     virtual bool giveback( human *selected )=0;
     virtual double check_fee()=0;
     virtual void iter()=0;
+    virtual bool isactive();
 };
 #endif // PUB_INTERFACE_H

@@ -5,6 +5,11 @@
 
 using namespace std;
 
+publication::publication()
+{
+
+}
+
 publication::~publication()
 {
     if ( !ordering.size() )
@@ -15,7 +20,6 @@ bool publication::order( human *selected )
 {
     if ( !active ) // obs³uga wyj¹tków
     {
-        get( selected );
         return false;
     }
     else
@@ -82,4 +86,9 @@ double publication::check_fee()
 void publication::iter()
 {
     iterations++;
+}
+
+bool publication::isactive()
+{
+    return active;
 }

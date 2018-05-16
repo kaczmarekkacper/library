@@ -13,6 +13,8 @@ protected:
     double fee;
     std::vector<publication *> books_n_magazines; // field of books and magazines for humans
 public:
+    human();
+    ~human();
     virtual bool order( publication *work, human *assistant );
     virtual bool get( publication *work, human *assistant );
     virtual bool giveback( publication *work, human *assistant );

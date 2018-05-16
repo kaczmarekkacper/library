@@ -6,32 +6,14 @@ using namespace std;
 
 int librarian::amount = 1;
 
-librarian::librarian(): number(amount)
+librarian::librarian()
 {
     cout << "Librarian number "<< number << " constructor" << endl;
     amount++;
 }
 
-bool librarian::lend()
-{
-    cout << "Librarian number "<< number << " lend function" << endl;
-    return true;
-}
-
-bool librarian::giveback()
-{
-    cout << "Librarian number "<< number << " giveback function" << endl;
-    return true;
-}
-
-bool librarian::order()
-{
-    cout << "Librarian number "<< number << " order function" << endl;
-    return true;
-}
-
-double librarian::check_fee()
-{
-    cout << "Librarian number "<< number << " check_fee function" << endl;
-    return 1.5;
-}
+librarian::~librarian() {}
+bool librarian::lib_order( human *client, publication *work) {}
+bool librarian::lib_get ( human *client, publication *work) {}
+bool librarian::lib_giveback ( human *client, publication *work){}
+double librarian::lib_check_fee() {}

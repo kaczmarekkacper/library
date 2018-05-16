@@ -14,21 +14,78 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
     {
         vec_of_readers.push_back( reader() );
     }
+
     for ( int i= 0; i < hml ; i++ )
     {
         vec_of_librarians.push_back( librarian() );
     }
-    for ( int i= 0; i < hmb ; i++ )
+
+    for ( int i= 0; i < (hmb+hmm) ; i++ )
     {
-        vec_of_books.push_back( book() );
-    }
-    for ( int i= 0; i < hmm ; i++ )
-    {
-        vec_of_magazines.push_back( magazine() );
+        vec_of_publications.push_back( book() );
+        vec_of_publications.push_back( magazine() );
+
     }
 
     for (int i = 0 ; i < hmloops ; i++)
     {
+        for (int j = 0 ; j < hmloops/2 ; j++)
+        {
+            if ( rdnumber(0, 1) ) // reader's operations ( rd is 1)
+            {
+                long option = rdnumber(1, 4);
+                int which_one_reader = rdnumber( 0, vec_of_readers.size());
+                int which_one_publication = rdnumber( 0, vec_of_publications.size());
+                int librarian = rdnumber ( 0, vec_of_librarians.size() );
+                switch ( option )
+                {
+                case 1:
+                    vec_of_readers[which_one_reader].order( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    break;
+                case 2:
+                    vec_of_readers[which_one_reader].get( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    break;
+                case 3:
+                    vec_of_readers[which_one_reader].giveback( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    break;
+                case 4:
+                    vec_of_readers[which_one_reader].check_fee( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    break;
+                default:
+                    cout << "Reader nr " << which_one_reader << " does nothing." << endl;
+                break;
+                };
+            Sleep(1000);
+            }
+            else
+            {
+                long option = rdnumber(1, 4);
+                int which_one_librarian = rdnumber( 0, vec_of_librarians.size());
+                int which_one_publication = rdnumber( 0, vec_of_publications.size());
+                int librarian = rdnumber ( 0, vec_of_librarians.size() );
+                switch ( option )
+                {
+                case 1:
+                    vec_of_librarians[which_one_librarian].order( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    break;
+                case 2:
+                    vec_of_librarians[which_one_librarian].get( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    break;
+                case 3:
+                    vec_of_librarians[which_one_librarian].giveback( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    break;
+                case 4:
+                    vec_of_librarians[which_one_librarian].check_fee( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    break;
+                default:
+                    cout << "Librarian nr " << which_one_librarian << " does nothing." << endl;
+                break;
+                };
+            Sleep(1000);
+            }
+            }
+
+        /*
         long option = rdnumber(1, 5);
         int which_one = rdnumber(0, hmr-1);
         switch (option)
@@ -92,6 +149,7 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
         default:
             cout << "Nothing to do." << endl;
             break;
+
         };
         Sleep(1000);
 
@@ -116,6 +174,7 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
             break;
             };
         Sleep(1000);
+        */
     }
 }
 
@@ -123,8 +182,7 @@ test_for_library::~test_for_library()
 {
     vec_of_readers.clear();
     vec_of_librarians.clear();
-    vec_of_books.clear();
-    vec_of_magazines.clear();
+    vec_of_publications.clear();
 }
 
 long test_for_library::rdnumber(int a, int b)

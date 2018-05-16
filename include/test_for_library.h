@@ -15,8 +15,7 @@ class test_for_library
 {
     std::vector <reader> vec_of_readers;
     std::vector <librarian> vec_of_librarians;
-    std::vector <book> vec_of_books;
-    std::vector <magazine> vec_of_magazines;
+    std::vector <publication> vec_of_publications;
 public:
     // hmr - how many readers
     // hml - how many librarians

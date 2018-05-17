@@ -12,13 +12,14 @@ protected:
     int number;
     double fee;
     std::vector<publication *> books_n_magazines; // field of books and magazines for humans
+    std::vector<int> status;
 public:
     human();
     ~human();
     virtual bool order( publication *work, human *assistant );
     virtual bool get( publication *work, human *assistant );
     virtual bool giveback( publication *work, human *assistant );
-    virtual double check_fee( publication *work, human *assistant );
+    virtual double check_fee( );
     virtual void change_fee ( double extra_fee );
 };
 #endif // HUMAN_H_INCLUDED

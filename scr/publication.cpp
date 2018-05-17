@@ -42,11 +42,7 @@ bool publication::get( human *selected )
     }
     else // oblusga wykatkow
     {
-        cout << "Cannot get a book because its active, you will order it as well." << endl;
-        if ( order ( selected ) )
-            return true;
-        else
-            return false;
+        return false;
     }
 }
 

@@ -8,5 +8,6 @@ int reader::amount = 1;
 
 reader::reader()
 {
-
+    number = amount;
+    amount++;
 }

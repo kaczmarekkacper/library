@@ -10,5 +10,10 @@ using namespace std;
 
 magazine::magazine()
 {
-
+    position = amount;
+    amount++;
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> dist(10, 1000);
+    amount_of_articles =  dist( gen );
 }

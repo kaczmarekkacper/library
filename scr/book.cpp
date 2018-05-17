@@ -16,5 +16,5 @@ book::book()
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dist(10, 1000);
-    long pages =  dist( gen );
+    pages =  dist( gen );
 }

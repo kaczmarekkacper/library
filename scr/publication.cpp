@@ -2,11 +2,23 @@
 #include <iostream>
 #include "publication.h"
 #include <vector>
+#include <random>
 
 using namespace std;
 
 publication::publication()
 {
+    position = 0;
+    type = 0;
+    active = false;
+    iterations = 0;
+    loops = 0;
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> dist(10, 1000);
+    fee = ( dist( gen ) / 100.0 );
+    owner = nullptr;
+    ordered = -1;
 
 }
 
@@ -21,9 +33,9 @@ bool publication::order( human *selected )
     if ( active ) // obs³uga wyj¹tków
     {
         if ( ordered = -1 )
-            ordered = time + 1;
+            ordered = loops + 1;
         else
-            ordered = ordered + time;
+            ordered = ordered + loops;
         ordering.push_back( selected );
         return true;
     }
@@ -56,20 +68,28 @@ bool publication::giveback( human *selected )
     }
     else
     {
+
     }
 }
 
 double publication::check_fee()
 {
-    if ( iterations > time )
+    if ( iterations > loops )
         return fee*iterations;
     else
         return 0.0;
 }
 
-void publication::iter()
+int publication::iter()
 {
-    iterations++;
+    if ( active )
+    {
+        if ( iterations == loops )
+        {
+
+        }
+    }
+
 }
 
 bool publication::isactive()
@@ -80,6 +100,29 @@ bool publication::isactive()
 bool publication::check_owner( human *client )
 {
     if ( client == owner )
+        return true;
+    else
+        return false;
+}
+
+void publication::status()
+{
+    cout << "Publication number " << position << "is a ";
+    type-1 ? cout << "book " : cout <<"magazine " ;
+    cout << endl ;
+    cout << "This publication is ";
+    active ? cout << "active" : cout << "not active";
+    cout << " now." << endl;
+    cout << "Value of iterations is " << iterations << "." << endl;
+    cout << "Fee is " << fee << endl;
+    owner ? cout << "It has an owner." : cout << "It doesnt have an owner." ;
+    cout << endl;
+    cout << "It is ordered for " << ordered << " and the is " << ordering.size() << " people in queque." << endl;
+}
+
+bool publication::statusqueue()
+{
+    if ( ordering.size() )
         return true;
     else
         return false;

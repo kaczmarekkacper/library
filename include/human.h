@@ -16,10 +16,9 @@ protected:
 public:
     human();
     ~human();
-    virtual bool order( publication *work, human *assistant );
-    virtual bool get( publication *work, human *assistant );
-    virtual bool giveback( publication *work, human *assistant );
+    virtual bool order( publication *work );
+    virtual bool get( publication *work );
+    virtual bool giveback( publication *work );
     virtual double check_fee( );
-    virtual void change_fee ( double extra_fee );
 };
 #endif // HUMAN_H_INCLUDED

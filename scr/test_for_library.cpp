@@ -42,19 +42,19 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                 switch ( option )
                 {
                 case 1:
-                    vec_of_readers[which_one_reader].order( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    vec_of_readers[which_one_reader].order( &vec_of_publications[which_one_publication]);
                     cout << "order reader" << endl;
                     break;
                 case 2:
-                    vec_of_readers[which_one_reader].get( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    vec_of_readers[which_one_reader].get( &vec_of_publications[which_one_publication]);
                     cout << "get reader" << endl;
                     break;
                 case 3:
-                    vec_of_readers[which_one_reader].giveback( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    vec_of_readers[which_one_reader].giveback( &vec_of_publications[which_one_publication]);
                     cout << "giveback reader" << endl;
                     break;
                 case 4:
-                    vec_of_readers[which_one_reader].check_fee( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    vec_of_readers[which_one_reader].check_fee();
                     cout << "check fee reader" << endl;
                     break;
                 default:
@@ -72,17 +72,17 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                 switch ( option )
                 {
                 case 1:
-                    vec_of_librarians[which_one_librarian].order( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    vec_of_librarians[which_one_librarian].order( &vec_of_publications[which_one_publication]);
                     cout << "order librarian" << endl;
                     break;
                 case 2:
-                    vec_of_librarians[which_one_librarian].get( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    vec_of_librarians[which_one_librarian].get( &vec_of_publications[which_one_publication]);
                     break;
                 case 3:
-                    vec_of_librarians[which_one_librarian].giveback( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    vec_of_librarians[which_one_librarian].giveback( &vec_of_publications[which_one_publication]);
                     break;
                 case 4:
-                    vec_of_librarians[which_one_librarian].check_fee( &vec_of_publications[which_one_publication], &vec_of_librarians[librarian]);
+                    vec_of_librarians[which_one_librarian].check_fee();
                     break;
                 default:
                     cout << "Librarian nr " << which_one_librarian << " does nothing." << endl;

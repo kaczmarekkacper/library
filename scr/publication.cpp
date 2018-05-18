@@ -18,11 +18,7 @@ publication::~publication()
 
 bool publication::order( human *selected )
 {
-    if ( !active ) // obs³uga wyj¹tków
-    {
-        return false;
-    }
-    else
+    if ( active ) // obs³uga wyj¹tków
     {
         if ( ordered = -1 )
             ordered = time + 1;
@@ -30,6 +26,10 @@ bool publication::order( human *selected )
             ordered = ordered + time;
         ordering.push_back( selected );
         return true;
+    }
+    else
+    {
+        return false;
     }
 }
 bool publication::get( human *selected )
@@ -48,35 +48,23 @@ bool publication::get( human *selected )
 
 bool publication::giveback( human *selected )
 {
-    if ( !active )
+    if ( active )
     {
-        // oblusga wyjatkow
+        owner = nullptr;
+        iterations = 0;
+
     }
     else
     {
-        active = 0;
-        if ( iterations > time )
-        {
-            selected->change_fee( fee*iterations );
-            cout << "Too many iterations" << endl;
-        }
-        iterations = 0;
-        owner = nullptr;
-        if ( !ordering.size() )
-        {
-            owner = ordering[1];
-            ordering.erase( ordering.begin() );
-            get ( owner );
-        }
-        else
-            ordered = -1;
-
     }
 }
 
 double publication::check_fee()
 {
-    return fee;
+    if ( iterations > time )
+        return fee*iterations;
+    else
+        return 0.0;
 }
 
 void publication::iter()
@@ -87,4 +75,12 @@ void publication::iter()
 bool publication::isactive()
 {
     return active;
+}
+
+bool publication::check_owner( human *client )
+{
+    if ( client == owner )
+        return true;
+    else
+        return false;
 }

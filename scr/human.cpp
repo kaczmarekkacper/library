@@ -21,64 +21,76 @@ human::~human()
     }
 }
 
-bool human::order( publication *work, human *assistant )
+bool human::order( publication *work )
 {
     if ( work->isactive() ) // if work is active
     {
-        if ( !assistant->lib_order ( this, work ) ) // if librarian cant get a book for reader
-            return false;
-        else // if he can
         {
-            if ( !work->order( this ) ) // if publication cant be geted
-            {
-                return false;
-            }
-            else // if everything is ok and human can get a publication
+            if ( work->order( this ) ) // if publication can be geted
             {
                 books_n_magazines.push_back( work );
                 return true;
             }
+            else // if we cant order it because of something
+            {
+                return false;
+            }
         }
     }
     else // if is active
-    {
-
-    }
-}
-bool human::get( publication *work, human *assistant )
-{
-    if ( !work->isactive() ) // if isnt active
     {
         return false;
     }
-    else // if is active
+}
+bool human::get( publication *work )
+{
+    if ( work->isactive() ) // if is active
     {
-        if ( !assistant->lib_get ( this, work ) ) // if librarian cant get a book for reader
-            return false;
-        else // if he can
         {
-            if ( !work->get( this ) ) // if publication cant be geted
-            {
-                return false;
-            }
-            else // if everything is ok and human can get a publication
+            if ( work->get( this ) ) // if publication can be geted
             {
                 books_n_magazines.push_back( work );
                 return true;
             }
+            else
+            {
+                return false;
+            }
         }
+    }
+    else // if isnt active
+    {
+        return false;
     }
 
 }
-bool human::giveback( publication *work, human *assistant )
+bool human::giveback( publication *work )
 {
-
+    if ( work->isactive() )
+    {
+        if ( work->check_owner( this ) )
+        {
+            fee = fee + work->check_fee();
+            int i = 0;
+            for ( ; i < books_n_magazines.size() ; i++ )
+            {
+                if ( work == books_n_magazines[i] )
+                    break;
+            }
+            books_n_magazines.erase( books_n_magazines.begin() + i );
+            status.erase( status.begin() + i );
+            return true;
+        }
+        else
+            return false;
+    }
+    else
+    {
+        return false;
+    }
 }
 double human::check_fee( )
 {
     return fee;
 }
-void human::change_fee ( double extra_fee )
-{
 
-}

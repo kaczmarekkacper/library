@@ -9,6 +9,7 @@ protected:
     virtual bool giveback( human *selected )=0;
     virtual double check_fee()=0;
     virtual void iter()=0;
-    virtual bool isactive();
+    virtual bool isactive()=0;
+    virtual bool check_owner(human *client)=0;
 };
 #endif // PUB_INTERFACE_H

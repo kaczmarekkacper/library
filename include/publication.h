@@ -11,6 +11,8 @@ using namespace std;
 class publication: public pub_interface
 {
 protected:
+    int position; // first book/magazine has number one, next number two etc
+    int type; // 1 for books, 2 for magazines
     bool active; // is already taken?
     int iterations; // how many iterations when taken
     int time;
@@ -27,6 +29,7 @@ public:
     virtual double check_fee();
     virtual void iter();
     virtual bool isactive();
+    virtual bool check_owner( human *client );
 };
 
 #endif // PUBLICATION_H_INCLUDED

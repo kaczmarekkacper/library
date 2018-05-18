@@ -12,6 +12,7 @@ magazine::magazine()
 {
     position = amount;
     amount++;
+    type = 1;
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dist(10, 1000);

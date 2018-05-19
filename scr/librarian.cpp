@@ -57,13 +57,25 @@ bool librarian::lib_get ( human *client, publication *work)
 }
 bool librarian::lib_giveback ( human *client, publication *work)
 {
-    int i = 0;
-    for ( ; i < clients.size()-1 ; i++ )
+    if ( work->isactive() )
     {
-        if ( work == books_n_magazines[i] )
-            break;
+        if ( work->check_owner( client ) )
+        {
+            int i = 0;
+            for ( ; i < clients.size()-1 ; i++ )
+            {
+                if ( work == books_n_magazines[i] )
+                    break;
+            }
+            clients.erase( clients.begin() + i );
+            works.erase( works.begin() + i );
+            status.erase( status.begin() + i );
+            return true;
+        }
+        else
+            return false;
     }
-    clients.erase( clients.begin() + i );
-    works.erase( works.begin() + i );
-    status.erase( status.begin() + i );
+    else
+        return false;
+
 }

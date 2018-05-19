@@ -18,7 +18,7 @@ public:
     ~human();
     virtual bool order( publication *work );
     virtual bool get( publication *work );
-    virtual bool giveback( publication *work );
+    virtual double giveback( publication *work );
     virtual double check_fee( );
 };
 #endif // HUMAN_H_INCLUDED

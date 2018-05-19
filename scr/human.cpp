@@ -31,31 +31,21 @@ human::~human()
 
 bool human::order( publication *work )
 {
-    cout << "Human number " << number << "order function." << endl;
     if ( work->isactive() ) // if work is active
     {
+        if ( work->order( this ) ) // if publication can be geted
         {
-            if ( work->order( this ) ) // if publication can be geted
-            {
-                books_n_magazines.push_back( work );
-                status.push_back( 2 );
-                cout << "Push back work to booksnmagazines with status ordered in human " << number << "." << endl;
-                cout << "End of human " << number << "order function." << endl;
-                return true;
-            }
-            else // if we cant order it because of something
-            {
-                cout << "Cannot order.";
-                cout << "End of human " << number << "order function." << endl;
-                return false;
-            }
+            books_n_magazines.push_back( work );
+            status.push_back( 2 );
+            return true;
         }
-
+        else // if we cant order it because of something
+        {
+            return false;
+        }
     }
     else // if is active
     {
-        cout << "Book number " << number <<" isnt active" << endl;
-        cout << "End of human " << number << "order function." << endl;
         return false;
     }
 }
@@ -86,38 +76,42 @@ bool human::get( publication *work )
     }
 
 }
-bool human::giveback( publication *work )
+double human::giveback( publication *work )
 {
     cout << "Human number " << number << "giveback function." << endl;
     if ( work->isactive() )
     {
         if ( work->check_owner( this ) )
         {
-            cout << "Human number " << number << " gives back a publication." << endl ;
-            fee = fee + work->check_fee();
-            int i = 0;
-            for ( ; i < books_n_magazines.size()-1 ; i++ )
+            if ( work->giveback( this ) )
             {
-                if ( work == books_n_magazines[i] )
-                    break;
+                cout << "Human number " << number << " gives back a publication." << endl ;
+                fee = fee + work->check_fee();
+                work->set_fee_as_zero();
+                int i = 0;
+                for ( ; i < books_n_magazines.size()-1 ; i++ )
+                {
+                    if ( work == books_n_magazines[i] )
+                        break;
+                }
+                books_n_magazines.erase( books_n_magazines.begin() + i );
+                status.erase( status.begin() + i );
+                cout << "End of human " << number << "giveback function." << endl;
+                return fee;
             }
-            books_n_magazines.erase( books_n_magazines.begin() + i );
-            status.erase( status.begin() + i );
-            cout << "End of human " << number << "giveback function." << endl;
-            return true;
         }
         else
         {
             cout << "Publication isnt yours." << endl;
-            cout << "End of human " << number << "iveback function." << endl;
+            cout << "End of human " << number << "giveback function." << endl;
+            return -1;
         }
-            return false;
     }
     else
     {
         cout << "Publication isnt active." << endl;
         cout << "End of human " << number << "giveback function." << endl;
-        return false;
+        return -2;
     }
 }
 double human::check_fee( )

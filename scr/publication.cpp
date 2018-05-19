@@ -62,13 +62,14 @@ bool publication::giveback( human *selected )
 {
     if ( active )
     {
+        if ( check_owner( selected ))
         owner = nullptr;
         iterations = 0;
-
+        active = false;
     }
     else
     {
-
+        return false;
     }
 }
 
@@ -86,10 +87,21 @@ int publication::iter()
     {
         if ( iterations == loops )
         {
+            iterations++;
+            return 0;
+        }
+        else
+        {
+            if ( iterations > loops)
+            {
+                iterations++;
+                return 1;
+            }
+            else
+                return 2;
 
         }
     }
-
 }
 
 bool publication::isactive()
@@ -126,4 +138,9 @@ bool publication::statusqueue()
         return true;
     else
         return false;
+}
+
+void publication::set_fee_as_zero()
+{
+    fee = 0;
 }

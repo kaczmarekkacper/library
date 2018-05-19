@@ -32,6 +32,7 @@ public:
     virtual bool check_owner( human *client );
     virtual void status();
     virtual bool statusqueue();
+    virtual void set_fee_as_zero();
 };
 
 #endif // PUBLICATION_H_INCLUDED

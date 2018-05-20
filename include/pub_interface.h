@@ -15,5 +15,6 @@ protected:
     virtual bool statusqueue()=0;
     virtual void set_fee_as_zero()=0;
     virtual int get_position()=0;
+    virtual void whats_your_name()=0;
 };
 #endif // PUB_INTERFACE_H

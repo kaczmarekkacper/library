@@ -158,3 +158,9 @@ int publication::get_position()
 {
     return position;
 }
+
+void publication::whats_your_name()
+{
+    type-1 ? cout << "book" : cout << "magazine" ;
+    cout << " number " << position << " ";
+}

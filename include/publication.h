@@ -34,6 +34,7 @@ public:
     virtual bool statusqueue();
     virtual void set_fee_as_zero();
     virtual int get_position();
+    virtual void whats_your_name();
 };
 
 #endif // PUBLICATION_H_INCLUDED

@@ -53,11 +53,15 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                 case 1:
                     if ( vec_of_librarians[wol].lib_order( &vec_of_readers[wor], &vec_of_publications[wop]) )
                     {
-                        cout << "Librarian " << wol+1 << " ordered a book for reader " << wor << endl;
+                        cout << "Librarian " << wol+1 << " ordered a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout << " for reader " << wor << endl;
                         Sleep(1000);
                         if ( vec_of_readers[wor].order( &vec_of_publications[wop]) )
                         {
-                            cout << "Reader number " << wor+1 << " ordered a publication." << endl;
+                            cout << "Reader number " << wor+1 << " ordered a ";
+                            vec_of_publications[wop].whats_your_name();
+                            cout << endl;
                             Sleep(1000);
                         }
                         else
@@ -68,22 +72,32 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                     }
                     else
                     {
-                        cout << "Reader number " << wor+1 << " cant order a publication because it isnt active." << endl;
+                        cout << "Reader number " << wor+1 << " cant order a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout <<  "because it isnt active." << endl;
                         Sleep(1000);
-                        cout << "So reader " << wor+1 << " is going to get a book." << endl;
+                        cout << "So reader " << wor+1 << " is going to get a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout << endl;
                         Sleep(1000);
                         if ( vec_of_librarians[wol].lib_get( &vec_of_readers[wor], &vec_of_publications[wop]) )
                         {
-                            cout << "Librarian " << wol+1 << " getted a book for reader " << wor+1 << endl;
+                            cout << "Librarian " << wol+1 << " getted a ";
+                            vec_of_publications[wop].whats_your_name();
+                            cout << "for reader " << wor+1 << endl;
                             Sleep(1000);
                             if ( vec_of_readers[wor].get( &vec_of_publications[wop]) )
                             {
-                                cout << "Reader number " << wor+1 << " getted a publication." << endl;
+                                cout << "Reader number " << wor+1 << " getted a ";
+                                vec_of_publications[wop].whats_your_name();
+                                cout << endl;
                                 Sleep(1000);
                             }
                             else
                             {
-                                cout << "Something gone wrong very very very he cant order an even get a publication" << endl;
+                                cout << "Something gone wrong very very very he cant order an even get a ";
+                                vec_of_publications[wop].whats_your_name();
+                                cout << endl;
                                 Sleep(1000);
                             }
                         }
@@ -92,11 +106,15 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                 case 2:
                     if ( vec_of_librarians[wol].lib_get( &vec_of_readers[wor], &vec_of_publications[wop]) )
                     {
-                        cout << "Librarian " << wol+1 << " getted a book for reader " << wor+1 << endl;
+                        cout << "Librarian " << wol+1 << " getted a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout << "for reader " << wor+1 << endl;
                         Sleep(1000);
                         if ( vec_of_readers[wor].get( &vec_of_publications[wop]) )
                         {
-                            cout << "Reader number " << wor+1 << " getted a publication." << endl;
+                            cout << "Reader number " << wor+1 << " getted a ";
+                            vec_of_publications[wop].whats_your_name();
+                            cout << endl;
                             Sleep(1000);
                         }
                         else
@@ -107,47 +125,66 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                     }
                     else
                     {
-                        cout << "Reader number " << wor+1 << " cant getted a publication because it is active." << endl;
+                        cout << "Reader number " << wor+1 << " cant getted a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout << "because it is active." << endl;
                         Sleep(1000);
-                        cout << "So reader " << wor+1 << " is going to order a book." << endl;
+                        cout << "So reader " << wor+1 << " is going to order a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout << endl;
                         Sleep(1000);
                         if ( vec_of_librarians[wol].lib_order( &vec_of_readers[wor], &vec_of_publications[wop]) )
                         {
-                            cout << "Librarian " << wol+1 << " ordered a book for reader " << wor+1 << endl;
+                            cout << "Librarian " << wol+1 << " ordered a ";
+                            vec_of_publications[wop].whats_your_name();
+                            cout << "for reader " << wor+1 << endl;
                             Sleep(1000);
                             if ( vec_of_readers[wor].order( &vec_of_publications[wop]) )
                             {
-                                cout << "Reader number " << wor+1 << " ordered a publication." << endl;
+                                cout << "Reader number " << wor+1 << " ordered a ";
+                                vec_of_publications[wop].whats_your_name();
+                                cout << endl;
                                 Sleep(1000);
                             }
                             else
                             {
-                                cout << "Something gone wrong very very very he cant get an even order a publicatiin" << endl;
+                                cout << "Something gone wrong very very very he cant get an even order a ";
+                                vec_of_publications[wop].whats_your_name();
+                                cout << endl;
                                 Sleep(1000);
                             }
                         }
                     }
                     break;
                 case 3:
+                    cout << "Reader number " << wor << "want to return a ";
+                    vec_of_publications[wop].whats_your_name();
+                    cout << endl;
                     if ( vec_of_librarians[wol].lib_giveback( &vec_of_readers[wor], &vec_of_publications[wop] ) )
                     {
-                        cout << "Librarian number " << wol+1 << " set publication as givebacked." << endl;
+                        cout << "Librarian number " << wol+1 << " set a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout << " as givebacked." << endl;
                         Sleep(1000);
 
                     }
                     else
                     {
-                            cout << "Librarian number " << wol+1 << " cant set publication as givebacked." << endl;
+                            cout << "Librarian number " << wol+1 << " cant set a ";
+                            vec_of_publications[wop].whats_your_name();
+                            cout << " as givebacked." << endl;
                     }
                     fee = vec_of_readers[wor].giveback( &vec_of_publications[wop]);
                     if ( fee = -2 )
                     {
-                        cout << "Publication isnt even active " << endl;
+                        vec_of_publications[wop].whats_your_name();
+                        cout << " isnt even active " << endl;
                         Sleep(1000);
                     }
                     else if ( fee = -1 )
                     {
-                        cout << "Publication isnt belong to this reader number " << wor+1 << "." << endl;
+                        vec_of_publications[wop].whats_your_name();
+                        cout << " isnt belong to this reader number " << wor+1 << "." << endl;
                         Sleep(1000);
                     }
                     else if ( fee = 0.0)
@@ -183,7 +220,9 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                             {
                                 if ( vec_of_publications[i].check_owner( &vec_of_readers[j] ) )
                                 {
-                                    cout << "Reader number " << vec_of_readers[j].get_number() << " should return the publication number " << vec_of_publications[i].get_position() << endl;
+                                    cout << "Reader number " << vec_of_readers[j].get_number() << " should return a ";
+                                    vec_of_publications[i].whats_your_name();
+                                    cout << endl;
                                     Sleep(1000);
                                 }
                             }
@@ -205,11 +244,15 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                 case 1:
                     if ( vec_of_librarians[wol].lib_order( &vec_of_librarians[worl], &vec_of_publications[wop]) )
                     {
-                        cout << "Librarian " << wol+1 << " ordered a book for librarianreader " << worl+1 << endl;
+                        cout << "Librarian " << wol+1 << " ordered a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout << " for librarianreader " << worl+1 << endl;
                         Sleep(1000);
                         if ( vec_of_librarians[worl].order( &vec_of_publications[wop]) )
                         {
-                            cout << "Librarianreader number " << worl+1 << " ordered a publication." << endl;
+                            cout << "Librarianreader number " << worl+1 << " ordered a ";
+                            vec_of_publications[wop].whats_your_name();
+                            cout << endl;
                             Sleep(1000);
                         }
                         else
@@ -220,22 +263,32 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                     }
                     else
                     {
-                        cout << "LibrarianReader number " << worl+1 << " cant order a publication because it isnt active." << endl;
+                        cout << "LibrarianReader number " << worl+1 << " cant order a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout << " because it isnt active." << endl;
                         Sleep(1000);
-                        cout << "So Librarianreader " << worl+1 << " is going to get a book." << endl;
+                        cout << "So Librarianreader " << worl+1 << " is going to get a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout << endl;
                         Sleep(1000);
                         if ( vec_of_librarians[wol].lib_get( &vec_of_librarians[worl], &vec_of_publications[wop]) )
                         {
-                            cout << "Librarian " << wol+1 << " getted a book for librarianreader " << worl+1 << endl;
+                            cout << "Librarian " << wol+1 << " getted a ";
+                            vec_of_publications[wop].whats_your_name();
+                            cout << " for librarianreader " << worl+1 << endl;
                             Sleep(1000);
                             if ( vec_of_librarians[worl].get( &vec_of_publications[wop]) )
                             {
-                                cout << "LibrarianReader number " << worl+1 << " getted a publication." << endl;
+                                cout << "LibrarianReader number " << worl+1 << " getted a ";
+                                vec_of_publications[wop].whats_your_name();
+                                cout << endl;
                                 Sleep(1000);
                             }
                             else
                             {
-                                cout << "Something gone wrong very very very he cant order an even get a publicatiin" << endl;
+                                cout << "Something gone wrong very very very he cant order an even get a ";
+                                vec_of_publications[wop].whats_your_name();
+                                cout << endl;
                                 Sleep(1000);
                             }
                         }
@@ -244,11 +297,15 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                 case 2:
                     if ( vec_of_librarians[wol].lib_get( &vec_of_librarians[worl], &vec_of_publications[wop]) )
                     {
-                        cout << "Librarian " << wol+1 << " getted a book for librarianreader " << worl+1 << endl;
+                        cout << "Librarian " << wol+1 << " getted a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout << " for librarianreader " << worl+1 << endl;
                         Sleep(1000);
                         if ( vec_of_librarians[worl].get( &vec_of_publications[wop]) )
                         {
-                            cout << "LibrarianReader number " << worl+1 << " getted a publication." << endl;
+                            cout << "LibrarianReader number " << worl+1 << " getted a ";
+                            vec_of_publications[wop].whats_your_name();
+                            cout << endl;
                             Sleep(1000);
                         }
                         else
@@ -259,48 +316,64 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                     }
                     else
                     {
-                        cout << "LibrarianReader number " << worl+1 << " cant getted a publication because it is active." << endl;
+                        cout << "LibrarianReader number " << worl+1 << " cant getted a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout << " because it is active." << endl;
                         Sleep(1000);
                         cout << "So librarianreader " << worl+1 << " is going to order a book." << endl;
                         Sleep(1000);
                         if ( vec_of_librarians[wol].lib_order( &vec_of_librarians[worl], &vec_of_publications[wop]) )
                         {
-                            cout << "Librarian " << wol+1 << " ordered a book for librarianreader " << worl+1 << endl;
+                            cout << "Librarian " << wol+1 << " ordered a ";
+                            vec_of_publications[wop].whats_your_name();
+                            cout << " for librarianreader " << worl+1 << endl;
                             Sleep(1000);
                             if ( vec_of_librarians[worl].order( &vec_of_publications[wop]) )
                             {
-                                cout << "LibrarianReader number " << worl+1 << " ordered a publication." << endl;
+                                cout << "LibrarianReader number " << worl+1 << " ordered a ";
+                                vec_of_publications[wop].whats_your_name();
+                                cout << endl;
                                 Sleep(1000);
                             }
                             else
                             {
-                                cout << "Something gone wrong very very very he cant get an even order a publicatiin" << endl;
+                                cout << "Something gone wrong very very very he cant get an even order a ";
+                                vec_of_publications[wop].whats_your_name();
+                                cout << endl;
                                 Sleep(1000);
                             }
                         }
                     }
                     break;
                 case 3:
-                    cout << "Librarianreader number " << worl+1 << " want to return a book." << endl;
+                    cout << "Librarianreader number " << worl+1 << " want to return a ";
+                    vec_of_publications[wop].whats_your_name();
+                    cout << endl;
                     if ( vec_of_librarians[wol].lib_giveback( &vec_of_librarians[worl], &vec_of_publications[wop] ) )
                     {
-                        cout << "Librarian number " << wol+1 << " set publication as givebacked." << endl;
+                        cout << "Librarian number " << wol+1 << " set a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout << " as givebacked." << endl;
                         Sleep(1000);
 
                     }
                     else
                     {
-                        cout << "Librarian number " << wol+1 << " cant set publication as givebacked." << endl;
+                        cout << "Librarian number " << wol+1 << " cant set a ";
+                        vec_of_publications[wop].whats_your_name();
+                        cout <<  " as givebacked." << endl;
                     }
                     fee = vec_of_librarians[worl].giveback( &vec_of_publications[wop]);
                     if ( fee = -2 )
                     {
-                        cout << "Publication isnt even active." << endl;
+                        vec_of_publications[wop].whats_your_name();
+                        cout << " isnt even active." << endl;
                         Sleep(1000);
                     }
                     else if ( fee = -1 )
                     {
-                        cout << "Publication isnt belong to this reader number " << worl+1 << "." << endl;
+                        vec_of_publications[wop].whats_your_name();
+                        cout << " isnt belong to this reader number " << worl+1 << "." << endl;
                         Sleep(1000);
                     }
                     else if ( fee = 0.0)
@@ -336,7 +409,9 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                             {
                                 if ( vec_of_publications[i].check_owner( &vec_of_librarians[j] ) )
                                 {
-                                    cout << "Librarian number " << vec_of_librarians[j].get_number() << " should return the publication number " << vec_of_publications[i].get_position() << endl;
+                                    cout << "LibrarianReader number " << vec_of_librarians[j].get_number() << " should return a ";
+                                    vec_of_publications[i].whats_your_name();
+                                    cout << endl;
                                     Sleep(1000);
                                 }
                             }

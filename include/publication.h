@@ -33,6 +33,7 @@ public:
     virtual void status();
     virtual bool statusqueue();
     virtual void set_fee_as_zero();
+    virtual int get_position();
 };
 
 #endif // PUBLICATION_H_INCLUDED

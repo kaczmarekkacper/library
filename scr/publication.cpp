@@ -63,9 +63,23 @@ bool publication::giveback( human *selected )
     if ( active )
     {
         if ( check_owner( selected ))
-        owner = nullptr;
-        iterations = 0;
-        active = false;
+        {
+            owner = nullptr;
+            iterations = 0;
+            active = false;
+            if ( !ordering.size() )
+            {
+                ordered = ordered - loops;
+            }
+            else
+            {
+                ordered = -1;
+            }
+        }
+        else
+        {
+            return false;
+        }
     }
     else
     {
@@ -85,23 +99,18 @@ int publication::iter()
 {
     if ( active )
     {
-        if ( iterations == loops )
+        if ( iterations >= loops )
+        {
+            iterations++;
+            return 1;
+        }
+        else
         {
             iterations++;
             return 0;
         }
-        else
-        {
-            if ( iterations > loops)
-            {
-                iterations++;
-                return 1;
-            }
-            else
-                return 2;
-
-        }
     }
+
 }
 
 bool publication::isactive()
@@ -119,7 +128,7 @@ bool publication::check_owner( human *client )
 
 void publication::status()
 {
-    cout << "Publication number " << position << "is a ";
+    cout << "Publication number " << position << " is a ";
     type-1 ? cout << "book " : cout <<"magazine " ;
     cout << endl ;
     cout << "This publication is ";
@@ -143,4 +152,9 @@ bool publication::statusqueue()
 void publication::set_fee_as_zero()
 {
     fee = 0;
+}
+
+int publication::get_position()
+{
+    return position;
 }

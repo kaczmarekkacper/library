@@ -20,5 +20,6 @@ public:
     virtual bool get( publication *work );
     virtual double giveback( publication *work );
     virtual double check_fee( );
+    virtual int get_number();
 };
 #endif // HUMAN_H_INCLUDED

@@ -10,7 +10,6 @@ librarian::librarian()
 {
     number = amount;
     amount++;
-    cout << "End of librarian " << number << "get function." << endl;
 }
 
 librarian::~librarian()
@@ -21,28 +20,25 @@ librarian::~librarian()
         works.clear();
     if ( !status.size() )
         status.clear();
-    cout << "End of librarian " << number << " destructor." << endl;
 }
 
 bool librarian::lib_order( human *client, publication *work)
 {
-    if ( !work->isactive() )
+    if ( work->isactive() )
     {
         clients.push_back( client );
         works.push_back( work );
         status.push_back ( 2 );
-        cout << "End of librarian " << number << "lib_order." << endl;
         return true;
     }
     else
     {
-        cout << "End of librarian " << number << "lib_order." << endl;
         return false;
     }
 }
 bool librarian::lib_get ( human *client, publication *work)
 {
-    if ( work->isactive() )
+    if ( !work->isactive() )
     {
         clients.push_back( client );
         works.push_back( work );
@@ -77,5 +73,4 @@ bool librarian::lib_giveback ( human *client, publication *work)
     }
     else
         return false;
-
 }

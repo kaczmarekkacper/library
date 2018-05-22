@@ -41,6 +41,7 @@ main:
 clean:
 	rm -rf $(BUILDDIR)
 	rm -rf $(DEPDIR)
+	rm log.txt
 
 open:
 	./$(BUILDDIR)/$(TARGET)

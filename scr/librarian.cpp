@@ -9,6 +9,7 @@ int librarian::amount = 1;
 librarian::librarian()
 {
     number = amount;
+    type = 0;
     amount++;
 }
 

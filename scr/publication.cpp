@@ -126,7 +126,7 @@ bool publication::check_owner( human *client )
         return false;
 }
 
-void publication::status()
+void publication::status( fstream *file )
 {
     cout << "Publication number " << position << " is a ";
     type-1 ? cout << "book " : cout <<"magazine " ;
@@ -138,7 +138,21 @@ void publication::status()
     cout << "Fee is " << fee << endl;
     owner ? cout << "It has an owner." : cout << "It doesnt have an owner." ;
     cout << endl;
-    cout << "It is ordered for " << ordered << " and the is " << ordering.size() << " people in queque." << endl;
+    cout << "It is ordered for " << ordered << " and the is " << ordering.size() << " people in queue." << endl;
+    if ( file )
+    {
+        *file << "Publication number " << position << " is a ";
+        type-1 ? *file << "book " : *file <<"magazine " ;
+        *file << endl ;
+        *file << "This publication is ";
+        active ? *file << "active" : *file << "not active";
+        *file << " now." << endl;
+        *file << "Value of iterations is " << iterations << "." << endl;
+        *file << "Fee is " << fee << endl;
+        owner ? *file << "It has an owner." : *file << "It doesnt have an owner." ;
+        *file << endl;
+        *file << "It is ordered for " << ordered << " and the is " << ordering.size() << " people in queue." << endl;
+    }
 }
 
 bool publication::statusqueue()
@@ -159,8 +173,13 @@ int publication::get_position()
     return position;
 }
 
-void publication::whats_your_name()
+void publication::whats_your_name( fstream *file )
 {
     type-1 ? cout << "book" : cout << "magazine" ;
+    if ( file )
+    {
+        type-1 ? *file << "book" : *file << "magazine" ;
+        *file << " number " << position << " ";
+    }
     cout << " number " << position << " ";
 }

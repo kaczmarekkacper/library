@@ -2,6 +2,7 @@
 #define PUBLICATION_H_INCLUDED
 
 #include <vector>
+#include <fstream>
 #include "human.h"
 
 using namespace std;
@@ -30,11 +31,11 @@ public:
     virtual int iter();
     virtual bool isactive();
     virtual bool check_owner( human *client );
-    virtual void status();
+    virtual void status( fstream *file = nullptr);
     virtual bool statusqueue();
     virtual void set_fee_as_zero();
     virtual int get_position();
-    virtual void whats_your_name();
+    virtual void whats_your_name( fstream *file = nullptr );
 };
 
 #endif // PUBLICATION_H_INCLUDED

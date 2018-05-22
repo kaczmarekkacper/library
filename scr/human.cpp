@@ -2,6 +2,7 @@
 #include "publication.h"
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -102,4 +103,44 @@ double human::check_fee( )
 int human::get_number()
 {
     return number;
+}
+
+void human::human_status ( fstream *file )
+{
+    cout << "Human number " << number << " is a ";
+    type ? cout << "librarian" : cout << "reader";
+    cout << "." << endl;
+    cout << "He/She wallet is -" << fee << "." << endl;
+    int counter_for_owned = 0;
+    int counter_for_ordered = 0;
+    cout << status.size() << endl << books_n_magazines.size() << endl;
+    for (int i = 0 ; i < status.size()-1 ; i++ )
+    {
+        cout << "c" << i << endl;
+        if ( status[i] - 1)
+            counter_for_ordered++;
+        else
+            counter_for_owned++;
+        cout << "xd" << endl;
+    }
+    cout << "He/She has " << counter_for_owned << " publications in home." << endl;
+    cout << "And ordered " << counter_for_ordered << " publications." << endl;
+    if ( file )
+    {
+        *file << "Human number " << number << " is a ";
+        type ? *file << "librarian" : *file << "reader";
+        *file << "." << endl;
+        *file << "He/She wallet is -" << fee << "." << endl;
+        int counter_for_owned = 0;
+        int counter_for_ordered = 0;
+        for ( int i = 0 ; i <= status.size()-1 ; i++ )
+        {
+            if ( status[i]-1)
+                counter_for_ordered++;
+            else
+                counter_for_owned++;
+        }
+        *file << "He/She has " << counter_for_owned << " publications in home." << endl;
+        *file << "And ordered " << counter_for_ordered << " publications." << endl;
+    }
 }

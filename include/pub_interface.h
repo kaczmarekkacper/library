@@ -11,10 +11,10 @@ protected:
     virtual int iter()=0;
     virtual bool isactive()=0;
     virtual bool check_owner(human *client)=0;
-    virtual void status()=0;
+    virtual void status( fstream *file )=0;
     virtual bool statusqueue()=0;
     virtual void set_fee_as_zero()=0;
     virtual int get_position()=0;
-    virtual void whats_your_name()=0;
+    virtual void whats_your_name( fstream *file )=0;
 };
 #endif // PUB_INTERFACE_H

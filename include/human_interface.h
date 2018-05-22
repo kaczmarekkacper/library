@@ -1,6 +1,8 @@
 #ifndef HUMAN_INTERFACE_H
 #define HUMAN_INTERFACE_H
 
+#include <fstream>
+
 class human;
 class publication;
 
@@ -12,5 +14,6 @@ protected:
     virtual double giveback( publication *work )=0;
     virtual double check_fee(  )=0;
     virtual int get_number()=0;
+    virtual void human_status ( std::fstream *file )=0;
 };
 #endif // HUMAN_INTERFACE_H

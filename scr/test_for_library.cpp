@@ -45,13 +45,16 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
     {
         vec_of_publications.push_back( magazine() );
     }
-
     for (int i = 0 ; i < hmloops ; i++)
     {
+        cout << "LOOP NUMBER " << i+1 << endl;
+        file << "LOOP NUMBER " << i+1 << endl;
+        Sleep(1000);
         for (int j = 0 ; j < hmloops/2 ; j++)
         {
-            cout << "New loop." << endl;
-            file << "New loop." << endl;
+            cout << endl << "New action." << endl;
+            file << endl << "New action." << endl;
+            Sleep(1000);
             if ( rdnumber(0, 1) ) // reader's operations ( rd is 1)
             {
                 long option = rdnumber(1, 5);
@@ -210,6 +213,7 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                     cout << "Reader number " << vec_of_readers[wor].get_number() << " want to return a ";
                     file << "Reader number " << vec_of_readers[wor].get_number() << " want to return a ";
                     vec_of_publications[wop].whats_your_name( &file );
+                    Sleep(1000);
                     cout << endl;
                     file << endl;
                     if ( vec_of_librarians[wol].lib_giveback( &vec_of_readers[wor], &vec_of_publications[wop] ) )
@@ -229,23 +233,24 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                             vec_of_publications[wop].whats_your_name( &file );
                             cout << " as givebacked." << endl;
                             file << " as givebacked." << endl;
+                            Sleep(1000);
                     }
                     fee = vec_of_readers[wor].giveback( &vec_of_publications[wop]);
-                    if ( fee = -2 )
+                    if ( fee == -2 )
                     {
                         vec_of_publications[wop].whats_your_name( &file );
                         cout << "isnt even active " << endl;
                         file << "isnt even active " << endl;
                         Sleep(1000);
                     }
-                    else if ( fee = -1 )
+                    else if ( fee == -1 )
                     {
                         vec_of_publications[wop].whats_your_name( &file );
                         cout << " isnt belong to this reader number " << vec_of_readers[wor].get_number() << "." << endl;
                         file << " isnt belong to this reader number " << vec_of_readers[wor].get_number() << "." << endl;
                         Sleep(1000);
                     }
-                    else if ( fee = 0.0)
+                    else if ( fee == 0.0)
                     {
                         cout << "Reader number " << vec_of_readers[wor].get_number() << " doesnt need to pay a fee." << endl;
                         file << "Reader number " << vec_of_readers[wor].get_number() << " doesnt need to pay a fee." << endl;
@@ -281,10 +286,8 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                 int wop = rdnumber( 0, vec_of_publications.size()-1);
                 // wop - which one publication
                 int wol = rdnumber ( 0, vec_of_librarians.size()-1);
-                while (1)
+                while ( wol == wor)
                 {
-                    if ( wol != wor)
-                        break;
                     wol = rdnumber ( 0, vec_of_librarians.size()-1);
                 }
                 // wol - which one librarian
@@ -437,6 +440,7 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                     cout << "LibrarianReader number " << vec_of_librarians[wor].get_number() << " want to return a ";
                     file << "LibrarianReader number " << vec_of_librarians[wor].get_number() << " want to return a ";
                     vec_of_publications[wop].whats_your_name( &file );
+                    Sleep(1000);
                     cout << endl;
                     file << endl;
                     if ( vec_of_librarians[wol].lib_giveback( &vec_of_librarians[wor], &vec_of_publications[wop] ) )
@@ -456,23 +460,24 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                             vec_of_publications[wop].whats_your_name( &file );
                             cout << " as givebacked." << endl;
                             file << " as givebacked." << endl;
+                            Sleep(1000);
                     }
                     fee = vec_of_librarians[wor].giveback( &vec_of_publications[wop]);
-                    if ( fee = -2 )
+                    if ( fee == -2 )
                     {
                         vec_of_publications[wop].whats_your_name( &file );
                         cout << "isnt even active " << endl;
                         file << "isnt even active " << endl;
                         Sleep(1000);
                     }
-                    else if ( fee = -1 )
+                    else if ( fee == -1 )
                     {
                         vec_of_publications[wop].whats_your_name( &file );
                         cout << " isnt belong to this reader number " << vec_of_librarians[wor].get_number() << "." << endl;
                         file << " isnt belong to this reader number " << vec_of_librarians[wor].get_number() << "." << endl;
                         Sleep(1000);
                     }
-                    else if ( fee = 0.0)
+                    else if ( fee == 0.0)
                     {
                         cout << "LibrarianReader number " << vec_of_librarians[wor].get_number() << " doesnt need to pay a fee." << endl;
                         file << "LibrarianReader number " << vec_of_librarians[wor].get_number() << " doesnt need to pay a fee." << endl;
@@ -500,45 +505,47 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                 break;
                 };
             }
-            for ( int i = 0; i < vec_of_publications.size()-1 ; i++ )
+        }
+        for ( int i = 0; i < vec_of_publications.size()-1 ; i++ )
+        {
+            int option;
+            if ( option = vec_of_publications[i].iter() )
             {
-                int option;
-                if ( option = vec_of_publications[i].iter() )
+                if ( option == 1 )
                 {
-                    if ( option == 1 )
+                    cout << endl;
+                    file << endl;
+                    for ( int j = 0 ; j < vec_of_readers.size()-1 ; j++ )
                     {
-                        cout << endl;
-                        file << endl;
-                        for ( int j = 0 ; j < vec_of_readers.size()-1 ; j++ )
+                        if ( vec_of_publications[i].check_owner( &vec_of_readers[j] ) )
                         {
-                            if ( vec_of_publications[i].check_owner( &vec_of_readers[j] ) )
-                            {
-                                cout << "Reader number " << vec_of_readers[j].get_number() << " should return a ";
-                                file << "Reader number " << vec_of_readers[j].get_number() << " should return a ";
-                                vec_of_publications[i].whats_your_name( &file);
-                                cout << endl;
-                                file << endl;
-                                Sleep(1000);
-                            }
-                            if ( vec_of_publications[i].check_owner( &vec_of_librarians[j] ) )
-                            {
-                                cout << "LibrarianReader number " << vec_of_librarians[j].get_number() << " should return a ";
-                                file << "LibrarianReader number " << vec_of_librarians[j].get_number() << " should return a ";
-                                vec_of_publications[i].whats_your_name( &file);
-                                cout << endl;
-                                file << endl;
-                                Sleep(1000);
-                            }
+                            cout << "Reader number " << vec_of_readers[j].get_number() << " should return a ";
+                            file << "Reader number " << vec_of_readers[j].get_number() << " should return a ";
+                            vec_of_publications[i].whats_your_name( &file);
+                            cout << endl;
+                            file << endl;
+                            Sleep(1000);
+                        }
+                        if ( vec_of_publications[i].check_owner( &vec_of_librarians[j] ) )
+                        {
+                            cout << "LibrarianReader number " << vec_of_librarians[j].get_number() << " should return a ";
+                            file << "LibrarianReader number " << vec_of_librarians[j].get_number() << " should return a ";
+                            vec_of_publications[i].whats_your_name( &file);
+                            cout << endl;
+                            file << endl;
+                            Sleep(1000);
                         }
                     }
                 }
             }
-        cout << "End of loop" << endl << endl;
-        file << "End of loop" << endl << endl;
-        Sleep(1000);
         }
+        cout << "END OF LOOP" << endl << endl;
+        file << "END OF LOOP" << endl << endl;
+        Sleep(1000);
     }
-    for ( int i = 0; i < vec_of_publications.size()-1; i++)
+
+
+    for ( int i = 0; i < hmb+hmm-1; i++)
     {
 
         vec_of_publications[i].status( &file );
@@ -547,7 +554,7 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
         Sleep(1000);
     }
 
-    for ( int i = 0; i < vec_of_readers.size()-1; i++)
+    for ( int i = 0; i < hmr-1; i++)
     {
 
         vec_of_readers[i].human_status( &file );
@@ -556,7 +563,7 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
         Sleep(1000);
     }
 
-    for ( int i = 0; i < vec_of_librarians.size()-1; i++)
+    for ( int i = 0; i < hml-1; i++)
     {
 
         vec_of_librarians[i].human_status( &file );

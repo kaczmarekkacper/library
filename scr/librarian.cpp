@@ -59,9 +59,10 @@ bool librarian::lib_giveback ( human *client, publication *work)
         if ( work->check_owner( client ) )
         {
             int i = 0;
-            for ( ; i < clients.size()-1 ; i++ )
+            int clientssize = clients.size();
+            for ( ; i < clientssize-1 ; i++ )
             {
-                if ( work == books_n_magazines[i] )
+                if ( work == works[i] )
                     break;
             }
             clients.erase( clients.begin() + i );

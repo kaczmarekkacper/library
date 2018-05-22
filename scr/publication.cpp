@@ -69,12 +69,13 @@ bool publication::giveback( human *selected )
             active = false;
             if ( !ordering.size() )
             {
-                ordered = ordered - loops;
+                new_owner();
             }
             else
             {
                 ordered = -1;
             }
+            return true;
         }
         else
         {
@@ -90,7 +91,7 @@ bool publication::giveback( human *selected )
 double publication::check_fee()
 {
     if ( iterations > loops )
-        return fee*iterations;
+        return fee*(iterations - loops);
     else
         return 0.0;
 }
@@ -128,9 +129,8 @@ bool publication::check_owner( human *client )
 
 void publication::status( fstream *file )
 {
-    cout << "Publication number " << position << " is a ";
-    type-1 ? cout << "book " : cout <<"magazine " ;
-    cout << endl ;
+    type-1 ? cout << "Book " : cout <<"Magazine " ;
+    cout << "number " << position << endl;
     cout << "This publication is ";
     active ? cout << "active" : cout << "not active";
     cout << " now." << endl;
@@ -141,9 +141,8 @@ void publication::status( fstream *file )
     cout << "It is ordered for " << ordered << " and the is " << ordering.size() << " people in queue." << endl;
     if ( file )
     {
-        *file << "Publication number " << position << " is a ";
-        type-1 ? *file << "book " : *file <<"magazine " ;
-        *file << endl ;
+        type-1 ? *file << "Book " : *file <<"Magazine " ;
+        *file << "number " << position << endl;
         *file << "This publication is ";
         active ? *file << "active" : *file << "not active";
         *file << " now." << endl;
@@ -163,11 +162,6 @@ bool publication::statusqueue()
         return false;
 }
 
-void publication::set_fee_as_zero()
-{
-    fee = 0;
-}
-
 int publication::get_position()
 {
     return position;
@@ -182,4 +176,12 @@ void publication::whats_your_name( fstream *file )
         *file << " number " << position << " ";
     }
     cout << " number " << position << " ";
+}
+
+void publication::new_owner( )
+{
+    ordered = ordered - loops;
+    owner = ordering[0];
+    active = true;
+    ordering.erase ( ordering.begin() );
 }

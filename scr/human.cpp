@@ -70,29 +70,34 @@ double human::giveback( publication *work )
     {
         if ( work->check_owner( this ) )
         {
+            double fee_for_book = work->check_fee();
+            fee = fee + fee_for_book;
+            cout << "dobrze" << endl;
             if ( work->giveback( this ) )
             {
-                fee = fee + work->check_fee();
-                work->set_fee_as_zero();
+                cout << "dobrze" << endl;
                 int i = 0;
-                for ( ; i < books_n_magazines.size()-1 ; i++ )
+                int counter = books_n_magazines.size();
+                for ( ; i < counter-1 ; i++ )
                 {
                     if ( work == books_n_magazines[i] )
                         break;
                 }
+                cout << "dobrze" << endl;
                 books_n_magazines.erase( books_n_magazines.begin() + i );
+                cout << "zle" << endl;
                 status.erase( status.begin() + i );
-                return fee;
+                return fee_for_book;
             }
         }
         else
         {
-            return -1;
+            return -1.0;
         }
     }
     else
     {
-        return -2;
+        return -2.0;
     }
 }
 double human::check_fee( )
@@ -107,33 +112,31 @@ int human::get_number()
 
 void human::human_status ( fstream *file )
 {
-    cout << "Human number " << number << " is a ";
-    type ? cout << "librarian" : cout << "reader";
+    type ? cout << "Librarian" : cout << "Reader";
+    cout << " number " << number;
     cout << "." << endl;
     cout << "He/She wallet is -" << fee << "." << endl;
     int counter_for_owned = 0;
     int counter_for_ordered = 0;
-    cout << status.size() << endl << books_n_magazines.size() << endl;
-    for (int i = 0 ; i < status.size()-1 ; i++ )
+    int statussize = status.size();
+    for ( int i = 0 ; i <= (statussize-1) ; i++ )
     {
-        cout << "c" << i << endl;
         if ( status[i] - 1)
             counter_for_ordered++;
         else
             counter_for_owned++;
-        cout << "xd" << endl;
     }
     cout << "He/She has " << counter_for_owned << " publications in home." << endl;
     cout << "And ordered " << counter_for_ordered << " publications." << endl;
     if ( file )
     {
-        *file << "Human number " << number << " is a ";
-        type ? *file << "librarian" : *file << "reader";
-        *file << "." << endl;
+        type ? *file << "Librarian" : *file << "Reader";
+        *file << " number " << number;
         *file << "He/She wallet is -" << fee << "." << endl;
         int counter_for_owned = 0;
         int counter_for_ordered = 0;
-        for ( int i = 0 ; i <= status.size()-1 ; i++ )
+        int statussize = status.size();
+        for ( int i = 0 ; i <= (statussize-1) ; i++ )
         {
             if ( status[i]-1)
                 counter_for_ordered++;
@@ -144,3 +147,4 @@ void human::human_status ( fstream *file )
         *file << "And ordered " << counter_for_ordered << " publications." << endl;
     }
 }
+

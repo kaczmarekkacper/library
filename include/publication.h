@@ -33,9 +33,9 @@ public:
     virtual bool check_owner( human *client );
     virtual void status( fstream *file = nullptr);
     virtual bool statusqueue();
-    virtual void set_fee_as_zero();
     virtual int get_position();
     virtual void whats_your_name( fstream *file = nullptr );
+    virtual void new_owner();
 };
 
 #endif // PUBLICATION_H_INCLUDED

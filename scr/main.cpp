@@ -7,7 +7,6 @@ using namespace std;
 
 int main()
 {
-    bool flag = false;
     int hmr, hml, hmb, hmm, hmloops;
     fstream file;
     file.open( "config.txt" );
@@ -47,8 +46,9 @@ int main()
         catch (int i)
         {
             cout << "Something wrong with the file." << endl;
+            cout << "Start with default parameters." << endl;
             file.close();
-            flag = true;
+            test_for_library  T( 2, 3, 3, 3, 5);
         }
     }
     else
@@ -56,7 +56,6 @@ int main()
         cout << "Default" << endl;
         test_for_library  T( 2, 3, 3, 3, 5);
     }
-    if ( flag )
-        test_for_library  T( 2, 3, 3, 3, 5);
+
     return 0;
 }

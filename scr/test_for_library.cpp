@@ -571,7 +571,7 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
     }
 
 
-    for ( int i = 0; i < hmb+hmm-1; i++)
+    for ( int i = 0; i < hmb+hmm; i++)
     {
 
         vec_of_publications[i].status( &file );
@@ -580,7 +580,7 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
         Sleep(1000);
     }
 
-    for ( int i = 0; i < hmr-1; i++)
+    for ( int i = 0; i < hmr; i++)
     {
 
         vec_of_readers[i].human_status( &file );
@@ -589,7 +589,7 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
         Sleep(1000);
     }
 
-    for ( int i = 0; i < hml-1; i++)
+    for ( int i = 0; i < hml; i++)
     {
 
         vec_of_librarians[i].human_status( &file );

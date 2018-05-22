@@ -68,7 +68,7 @@ bool publication::giveback( human *selected )
             iterations = 0;
             active = false;
             int truefalse = ordering.size();
-            if ( !truefalse )
+            if ( truefalse )
             {
                 ordered = ordered - loops;
                 owner = ordering[0];

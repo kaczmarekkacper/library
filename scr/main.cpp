@@ -22,22 +22,22 @@ int main()
             file >> hml;
             if ( file.fail() || file.eof() )
             {
-                throw 1;
+                throw 2;
             }
             file >> hmb;
             if ( file.fail() || file.eof() )
             {
-                throw 1;
+                throw 3;
             }
             file >> hmm;
             if ( file.fail() || file.eof() )
             {
-                throw 1;
+                throw 4;
             }
             file >> hmloops;
             if ( file.fail())
             {
-                throw 1;
+                throw 5;
             }
             cout << "Data from file" << endl;
             test_for_library  T( hmr, hml, hmb, hmm, hmloops);
@@ -45,8 +45,31 @@ int main()
         }
         catch (int i)
         {
-            cout << "Something wrong with the file." << endl;
-            cout << "Start with default parameters." << endl;
+            if ( i == 1 )
+            {
+                cout << "Something wrong with the readers parameter." << endl;
+                cout << "Start with default parameters." << endl;
+            }
+            if ( i == 2 )
+            {
+                cout << "Something wrong with the librarians parameter." << endl;
+                cout << "Start with default parameters." << endl;
+            }
+            if ( i == 3)
+            {
+                cout << "Something wrong with the books parameter." << endl;
+                cout << "Start with default parameters." << endl;
+            }
+            if ( i == 4)
+            {
+                cout << "Something wrong with the magazines parameter." << endl;
+                cout << "Start with default parameters." << endl;
+            }
+            if ( i == 5 )
+            {
+                cout << "Something wrong with the loops parameter." << endl;
+                cout << "Start with default parameters." << endl;
+            }
             file.close();
             test_for_library  T( 2, 3, 3, 3, 5);
         }

@@ -24,5 +24,6 @@ public:
     virtual double check_fee( );
     virtual int get_number();
     virtual void human_status ( std::fstream *file = nullptr);
+    virtual bool check_ordering( publication *work );
 };
 #endif // HUMAN_H_INCLUDED

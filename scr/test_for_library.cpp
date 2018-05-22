@@ -96,8 +96,8 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                         cout << "Reader number " << vec_of_readers[wor].get_number() << " cant order a ";
                         file << "Reader number " << vec_of_readers[wor].get_number() << " cant order a ";
                         vec_of_publications[wop].whats_your_name( &file );
-                        cout <<  "because it isn't active." << endl;
-                        file <<  "because it isn't active." << endl;
+                        cout << endl;
+                        file << endl;
                         Sleep(1000);
                         cout << "So reader " << vec_of_readers[wor].get_number() << " is going to borrow a ";
                         file << "So reader " << vec_of_readers[wor].get_number() << " is going to borrow a ";
@@ -210,6 +210,18 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                     }
                     break;
                 case 3:
+                    try
+                    {
+                        if ( !vec_of_publications[wop].check_owner( &vec_of_readers[wor]) )
+                            throw 1;
+                    }
+                    catch ( int i )
+                    {
+                        cout << "Reader nr " << vec_of_readers[wor].get_number() << " does nothing." << endl;
+                        file << "Reader nr " << vec_of_readers[wor].get_number() << " does nothing." << endl;
+                        Sleep(1000);
+                        break;
+                    }
                     cout << "Reader number " << vec_of_readers[wor].get_number() << " want to return a ";
                     file << "Reader number " << vec_of_readers[wor].get_number() << " want to return a ";
                     vec_of_publications[wop].whats_your_name( &file );
@@ -323,8 +335,8 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                         cout << "LibrarianReader number " << vec_of_librarians[wor].get_number() << " cant order a ";
                         file << "LibrarianReader number " << vec_of_librarians[wor].get_number() << " cant order a ";
                         vec_of_publications[wop].whats_your_name( &file );
-                        cout <<  "because it isn't active." << endl;
-                        file <<  "because it isn't active." << endl;
+                        cout << endl;
+                        file << endl;
                         Sleep(1000);
                         cout << "So LibrarianReader " << vec_of_librarians[wor].get_number() << " is going to borrow a ";
                         file << "So LibrarianReader " << vec_of_librarians[wor].get_number() << " is going to borrow a ";
@@ -437,6 +449,18 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                     }
                     break;
                 case 3:
+                    try
+                    {
+                        if ( !vec_of_publications[wop].check_owner( &vec_of_librarians[wor]) )
+                            throw 1;
+                    }
+                    catch ( int i )
+                    {
+                        cout << "LibrarianReader nr " << vec_of_librarians[wor].get_number() << " does nothing." << endl;
+                        file << "LibrarianReader nr " << vec_of_librarians[wor].get_number() << " does nothing." << endl;
+                        Sleep(1000);
+                        break;
+                    }
                     cout << "LibrarianReader number " << vec_of_librarians[wor].get_number() << " want to return a ";
                     file << "LibrarianReader number " << vec_of_librarians[wor].get_number() << " want to return a ";
                     vec_of_publications[wop].whats_your_name( &file );
@@ -506,7 +530,8 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                 };
             }
         }
-        for ( int i = 0; i < vec_of_publications.size()-1 ; i++ )
+        int pubsize = vec_of_publications.size();
+        for ( int i = 0; i < pubsize ; i++ )
         {
             int option;
             if ( option = vec_of_publications[i].iter() )
@@ -515,7 +540,8 @@ test_for_library::test_for_library( int hmr, int hml, int hmb, int hmm, int hmlo
                 {
                     cout << endl;
                     file << endl;
-                    for ( int j = 0 ; j < vec_of_readers.size()-1 ; j++ )
+                    int readsize = vec_of_readers.size();
+                    for ( int j = 0 ; j < readsize ; j++ )
                     {
                         if ( vec_of_publications[i].check_owner( &vec_of_readers[j] ) )
                         {

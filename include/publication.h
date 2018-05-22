@@ -35,7 +35,6 @@ public:
     virtual bool statusqueue();
     virtual int get_position();
     virtual void whats_your_name( fstream *file = nullptr );
-    virtual void new_owner();
 };
 
 #endif // PUBLICATION_H_INCLUDED

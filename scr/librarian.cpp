@@ -27,6 +27,8 @@ bool librarian::lib_order( human *client, publication *work)
 {
     if ( work->isactive() )
     {
+        if ( client->check_ordering( work ) )
+            return false;
         clients.push_back( client );
         works.push_back( work );
         status.push_back ( 2 );
@@ -60,7 +62,7 @@ bool librarian::lib_giveback ( human *client, publication *work)
         {
             int i = 0;
             int clientssize = clients.size();
-            for ( ; i < clientssize-1 ; i++ )
+            for ( ; i < clientssize ; i++ )
             {
                 if ( work == works[i] )
                     break;
@@ -72,6 +74,24 @@ bool librarian::lib_giveback ( human *client, publication *work)
         }
         else
             return false;
+    }
+    else
+        return false;
+}
+
+bool librarian::change_status ( publication *work )
+{
+    int counter = works.size();
+    int i = 0;
+    for ( ; i < counter ; i++ )
+    {
+        if ( work == works[i] )
+            break;
+    }
+    if ( i != counter )
+    {
+        status[i] = 1;
+        return true;
     }
     else
         return false;

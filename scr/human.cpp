@@ -78,7 +78,7 @@ double human::giveback( publication *work )
                 cout << "dobrze" << endl;
                 int i = 0;
                 int counter = books_n_magazines.size();
-                for ( ; i < counter-1 ; i++ )
+                for ( ; i < counter; i++ )
                 {
                     if ( work == books_n_magazines[i] )
                         break;
@@ -119,7 +119,7 @@ void human::human_status ( fstream *file )
     int counter_for_owned = 0;
     int counter_for_ordered = 0;
     int statussize = status.size();
-    for ( int i = 0 ; i <= (statussize-1) ; i++ )
+    for ( int i = 0 ; i < statussize ; i++ )
     {
         if ( status[i] - 1)
             counter_for_ordered++;
@@ -136,7 +136,7 @@ void human::human_status ( fstream *file )
         int counter_for_owned = 0;
         int counter_for_ordered = 0;
         int statussize = status.size();
-        for ( int i = 0 ; i <= (statussize-1) ; i++ )
+        for ( int i = 0 ; i < statussize ; i++ )
         {
             if ( status[i]-1)
                 counter_for_ordered++;
@@ -148,3 +148,13 @@ void human::human_status ( fstream *file )
     }
 }
 
+bool human::check_ordering( publication *work )
+{
+    int counter = books_n_magazines.size();
+    for ( int i = 0 ; i < counter ; i++ )
+    {
+        if ( work == books_n_magazines[i] )
+            return true;
+    }
+    return false;
+}

@@ -17,6 +17,7 @@ public:
     bool lib_order( human *client, publication *work);
     bool lib_get ( human *client, publication *work);
     bool lib_giveback ( human *client, publication *work);
+    bool change_status ( publication *work );
 };
 
 #endif // LIBRARIAN_H_INCLUDED

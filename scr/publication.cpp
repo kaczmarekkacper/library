@@ -1,8 +1,8 @@
-
 #include <iostream>
 #include "publication.h"
 #include <vector>
 #include <random>
+#include "librarian.h"
 
 using namespace std;
 
@@ -67,9 +67,13 @@ bool publication::giveback( human *selected )
             owner = nullptr;
             iterations = 0;
             active = false;
-            if ( !ordering.size() )
+            int truefalse = ordering.size();
+            if ( !truefalse )
             {
-                new_owner();
+                ordered = ordered - loops;
+                owner = ordering[0];
+                active = true;
+                ordering.erase ( ordering.begin() );
             }
             else
             {
@@ -178,10 +182,3 @@ void publication::whats_your_name( fstream *file )
     cout << " number " << position << " ";
 }
 
-void publication::new_owner( )
-{
-    ordered = ordered - loops;
-    owner = ordering[0];
-    active = true;
-    ordering.erase ( ordering.begin() );
-}
